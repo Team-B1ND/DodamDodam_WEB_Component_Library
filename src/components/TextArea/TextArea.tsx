@@ -1,5 +1,9 @@
 import React from "react";
-import { TextAreaContainer } from "./TextArea.style";
+import {
+  TextAreaContainer,
+  TextAreaLength,
+  TextAreaWrap,
+} from "./TextArea.style";
 
 interface TextAreaProps {
   width: string | number;
@@ -7,6 +11,7 @@ interface TextAreaProps {
   text: string;
   placeHolder: string;
   onChangeText: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  textMaxLength: number;
 }
 
 const TextArea = ({
@@ -15,15 +20,19 @@ const TextArea = ({
   text,
   placeHolder,
   onChangeText,
+  textMaxLength,
 }: TextAreaProps) => {
   return (
-    <TextAreaContainer
-      width={Number(width)}
-      height={Number(height)}
-      placeholder={placeHolder}
-      value={text}
-      onChange={onChangeText}
-    />
+    <TextAreaContainer width={Number(width)} height={Number(height)}>
+      <TextAreaWrap
+        value={text}
+        onChange={onChangeText}
+        placeholder={placeHolder}
+      />
+      <TextAreaLength isExcess={textMaxLength > Text.length}>
+        {text.length}/{textMaxLength}
+      </TextAreaLength>
+    </TextAreaContainer>
   );
 };
 

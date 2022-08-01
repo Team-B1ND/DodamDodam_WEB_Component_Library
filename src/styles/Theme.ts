@@ -4,5 +4,6 @@ export const defaultTheme: DefaultTheme = {
   mainColor: "#0067bc",
   brightMainColor: "#0067bcd9",
   borderColor: "#d2d2d2",
-  backgroundColor: "#f0f2f4",
+  backgroundColor: "#ffffff",
+  fontColor: "#000000",
 };

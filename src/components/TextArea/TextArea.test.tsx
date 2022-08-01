@@ -11,6 +11,7 @@ describe("<TextArea/>", () => {
         placeHolder={"사유를 입력하세요"}
         text={"테스트 내용"}
         onChangeText={() => {}}
+        textMaxLength={100}
       />
     );
   });
