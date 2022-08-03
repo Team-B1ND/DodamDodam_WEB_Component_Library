@@ -3,7 +3,7 @@ import React from "react";
 import TextArea from "./TextArea";
 
 describe("<TextArea/>", () => {
-  test("텍스트아레아 컴포넌트 렌더링 확인", () => {
+  test("TextArea 컴포넌트 렌더링 확인", () => {
     render(
       <TextArea
         width={310}

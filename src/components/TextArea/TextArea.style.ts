@@ -16,7 +16,8 @@ export const TextAreaWrap = styled.textarea`
   border: 1px solid ${({ theme }) => theme.borderColor};
   resize: none;
   outline: none;
-  border: 1px solid ${({ theme }) => theme.backgroundColor};
+  background-color: ${({ theme }) => theme.backgroundColor};
+  box-sizing: border-box;
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.mainColor};
@@ -26,6 +27,7 @@ export const TextAreaWrap = styled.textarea`
 export const TextAreaLength = styled.span<{ isExcess: boolean }>`
   position: absolute;
   font-size: 12px;
+  line-height: 16px;
   color: #000000;
   bottom: 5px;
   right: 10px;

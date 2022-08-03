@@ -29,7 +29,7 @@ const TextArea = ({
         onChange={onChangeText}
         placeholder={placeHolder}
       />
-      <TextAreaLength isExcess={textMaxLength > Text.length}>
+      <TextAreaLength isExcess={textMaxLength < Text.length}>
         {text.length}/{textMaxLength}
       </TextAreaLength>
     </TextAreaContainer>
