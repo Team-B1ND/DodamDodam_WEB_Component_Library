@@ -3,9 +3,11 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const pkg = require("./package.json");
 
+const external = ["react", "react-dom", "styled-components"];
 export default [
   {
     input: "src/index.ts",
@@ -21,6 +23,7 @@ export default [
         sourcemap: true,
       },
     ],
+    external,
     plugins: [
       resolve(),
       commonjs(),
@@ -29,6 +32,7 @@ export default [
         tsconfig: "./tsconfig.json",
       }),
       postcss(),
+      peerDepsExternal(),
     ],
   },
   {

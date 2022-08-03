@@ -18,6 +18,7 @@ export const TextAreaWrap = styled.textarea`
   outline: none;
   background-color: ${({ theme }) => theme.backgroundColor};
   box-sizing: border-box;
+  font-size: 12px;
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.mainColor};
