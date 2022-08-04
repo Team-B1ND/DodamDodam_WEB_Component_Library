@@ -16,9 +16,15 @@ export const TextAreaWrap = styled.textarea`
   border: 1px solid ${({ theme }) => theme.borderColor};
   resize: none;
   outline: none;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  background-color: ${({ theme }) => theme.backgroundColor3};
   box-sizing: border-box;
   font-size: 12px;
+  overflow-y: hidden;
+  color: ${({ theme }) => theme.contrast};
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.mainColor};
