@@ -10,7 +10,7 @@ describe("<TextArea/>", () => {
         height={65}
         placeHolder={"사유를 입력하세요"}
         text={"테스트 내용"}
-        onChangeText={() => {}}
+        onChange={() => {}}
         textMaxLength={100}
       />
     );

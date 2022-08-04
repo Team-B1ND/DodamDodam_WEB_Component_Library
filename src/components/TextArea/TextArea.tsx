@@ -10,7 +10,7 @@ interface TextAreaProps {
   height: string | number;
   text: string;
   placeHolder: string;
-  onChangeText: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   textMaxLength: number;
 }
 
@@ -19,14 +19,14 @@ const TextArea = ({
   height,
   text,
   placeHolder,
-  onChangeText,
+  onChange,
   textMaxLength,
 }: TextAreaProps) => {
   return (
     <TextAreaContainer width={Number(width)} height={Number(height)}>
       <TextAreaWrap
         value={text}
-        onChange={onChangeText}
+        onChange={onChange}
         placeholder={placeHolder}
       />
       <TextAreaLength isExcess={textMaxLength < text.length}>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { palette } from "../../styles/palette";
 
 export const TextAreaContainer = styled.div<{
   width: number;
@@ -27,7 +28,7 @@ export const TextAreaWrap = styled.textarea`
   }
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.mainColor};
+    border: 1px solid ${palette.main};
   }
 `;
 
@@ -35,9 +36,9 @@ export const TextAreaLength = styled.span<{ isExcess: boolean }>`
   position: absolute;
   font-size: 12px;
   line-height: 16px;
-  color: #000000;
+  color: ${({ theme }) => theme.contrast};
   bottom: 5px;
   right: 10px;
 
-  ${({ isExcess }) => isExcess && `color : #e57373`};
+  ${({ isExcess }) => isExcess && `color : ${palette.red[300]}`};
 `;
