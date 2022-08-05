@@ -2,22 +2,21 @@ import styled, { css } from "styled-components";
 import { palette } from "../../styles/palette";
 
 export const ButtonContainer = styled.div<{
-  width: number;
-  height: number;
   type: "common" | "primary";
   disabeld: boolean;
 }>`
-  width: ${({ width }) => width}px;
-  width: ${({ height }) => height}px;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.contrast};
-  font-size: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   ${({ type }) =>
     type === "common" &&
     css`
       border: 1px solid ${({ theme }) => theme.borderColor};
       background-color: ${({ theme }) => theme.backgroundColor3};
+      color: ${({ theme }) => theme.contrast};
     `};
 
   ${({ type }) =>
@@ -25,12 +24,13 @@ export const ButtonContainer = styled.div<{
     css`
       border: 0px;
       background-color: ${palette.main};
+      color: white;
     `};
 
   ${({ disabeld }) =>
     disabeld &&
     css`
       cursor: default;
-      opacity: 80%;
+      opacity: 50%;
     `};
 `;

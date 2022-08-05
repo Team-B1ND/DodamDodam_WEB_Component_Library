@@ -5,14 +5,16 @@ interface ButtonProps {
   children: JSX.Element;
   width: string | number;
   height: string | number;
-  onClick: () => void | Promise<any>;
+  onClick: any;
   disabled?: boolean;
   type?: "common" | "primary";
+  fontSize?: string | number;
 }
 
 const Button = ({
   width,
   height,
+  fontSize = 14,
   children,
   onClick,
   disabled = false,
@@ -20,8 +22,11 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <ButtonContainer
-      width={Number(width)}
-      height={Number(height)}
+      style={{
+        width,
+        height,
+        fontSize,
+      }}
       type={type}
       onClick={disabled ? () => {} : onClick}
       disabeld={disabled}

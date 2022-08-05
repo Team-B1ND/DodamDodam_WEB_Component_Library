@@ -8,6 +8,7 @@ describe("<Button/>", () => {
       <Button
         width={100}
         height={20}
+        fontSize={14}
         onClick={() => console.log("테스트")}
         disabled={true}
         children={<>테스트</>}

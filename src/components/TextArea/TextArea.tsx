@@ -12,24 +12,32 @@ interface TextAreaProps {
   placeHolder: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   textMaxLength: number;
+  name: string;
+  fontSize: string | number;
 }
 
 const TextArea = ({
   width,
   height,
+  fontSize,
   text,
   placeHolder,
   onChange,
   textMaxLength,
+  name,
 }: TextAreaProps) => {
   return (
-    <TextAreaContainer width={Number(width)} height={Number(height)}>
+    <TextAreaContainer style={{ width, height }}>
       <TextAreaWrap
         value={text}
         onChange={onChange}
         placeholder={placeHolder}
+        name={name}
       />
-      <TextAreaLength isExcess={textMaxLength < text.length}>
+      <TextAreaLength
+        isExcess={textMaxLength < text.length}
+        style={{ fontSize }}
+      >
         {text.length}/{textMaxLength}
       </TextAreaLength>
     </TextAreaContainer>

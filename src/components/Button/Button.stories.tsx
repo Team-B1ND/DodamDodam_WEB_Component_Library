@@ -15,37 +15,45 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const PrimaryEnabled = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 PrimaryEnabled.args = {
-  width: 100,
-  height: 20,
+  width: 110,
+  height: 35,
   type: "primary",
   onClick: () => console.log("테스트"),
   disabled: false,
+  children: <>테스트</>,
+  fontSize: 14,
 };
 
 export const PrimaryDisabled = Template.bind({});
 
 PrimaryDisabled.args = {
-  width: 100,
-  height: 20,
+  width: 110,
+  height: 35,
   type: "primary",
   onClick: () => console.log("테스트"),
   disabled: true,
+  children: <>테스트</>,
+  fontSize: 14,
 };
 
 export const CommonEnabled = Template.bind({});
 
 CommonEnabled.args = {
-  width: 100,
-  height: 20,
+  width: 110,
+  height: 35,
   onClick: () => console.log("테스트"),
   disabled: false,
+  children: <>테스트</>,
+  fontSize: 14,
 };
 
 export const CommonDisabled = Template.bind({});
 
 CommonDisabled.args = {
-  width: 100,
-  height: 20,
+  width: 110,
+  height: 35,
   onClick: () => console.log("테스트"),
   disabled: true,
+  children: <>테스트</>,
+  fontSize: 14,
 };
