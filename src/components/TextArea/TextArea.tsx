@@ -12,19 +12,19 @@ interface TextAreaProps {
   placeHolder: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   textMaxLength: number;
-  name: string;
-  fontSize: string | number;
+  name?: string;
+  fontSize?: string | number;
 }
 
 const TextArea = ({
   width,
   height,
-  fontSize,
+  fontSize = 12,
   text,
   placeHolder,
   onChange,
   textMaxLength,
-  name,
+  name = "none",
 }: TextAreaProps) => {
   return (
     <TextAreaContainer style={{ width, height }}>

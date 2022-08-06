@@ -19,8 +19,10 @@ export const Primary = Template.bind({});
 Primary.args = {
   width: 315,
   height: 65,
-  onChangeText: () => {},
+  onChange: () => {},
   placeHolder: "값을 입력해주세요!",
   text: "테스트",
   textMaxLength: 100,
+  name: "none",
+  fontSize: 12,
 };

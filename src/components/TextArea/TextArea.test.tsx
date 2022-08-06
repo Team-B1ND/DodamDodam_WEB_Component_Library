@@ -12,6 +12,8 @@ describe("<TextArea/>", () => {
         text={"테스트 내용"}
         onChange={() => {}}
         textMaxLength={100}
+        fontSize={12}
+        name="none"
       />
     );
   });
