@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Dropdown from "./Dropdown";
+import styled from "styled-components";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -88,5 +89,19 @@ CommonEnabledNoneDefault.args = {
   name: "오후1",
   items: items,
   itemsValuePath: "obj/value",
+  onChange: onChange,
+};
+
+export const CommonWithLable = Template.bind({});
+
+CommonWithLable.args = {
+  itemkey: "오후1",
+  disabled: false,
+  disabledItem: "비활성화",
+  withDefault: false,
+  name: "오후1",
+  items: items,
+  itemsValuePath: "obj/value",
+  lable: <>오후1</>,
   onChange: onChange,
 };

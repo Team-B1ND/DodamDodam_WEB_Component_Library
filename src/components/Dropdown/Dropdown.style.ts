@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { palette } from "../../styles/palette";
 
-export const DropdownContainer = styled.select`
+export const DropdownContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+`;
+
+export const DropdownSelectContainer = styled.select`
   width: 165px;
   height: 30px;
   border: 1px solid ${({ theme }) => theme.borderColor};

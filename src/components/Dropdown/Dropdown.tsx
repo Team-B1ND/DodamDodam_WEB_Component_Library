@@ -1,5 +1,5 @@
 import React from "react";
-import { DropdownContainer } from "./Dropdown.style";
+import { DropdownContainer, DropdownSelectContainer } from "./Dropdown.style";
 
 interface DropdownProps<T extends { idx: number | string }> {
   itemkey: string;
@@ -11,6 +11,7 @@ interface DropdownProps<T extends { idx: number | string }> {
   items: T[];
   itemsValuePath: string;
   onChange: any;
+  lable?: JSX.Element;
 }
 
 const Dropdown = <T extends { idx: number | string }>({
@@ -23,6 +24,7 @@ const Dropdown = <T extends { idx: number | string }>({
   items,
   itemsValuePath,
   onChange,
+  lable = <></>,
 }: DropdownProps<T>) => {
   const paths = itemsValuePath.split("/");
 
@@ -43,41 +45,44 @@ const Dropdown = <T extends { idx: number | string }>({
   }
 
   return (
-    <DropdownContainer
-      onChange={onChange}
-      defaultValue={
-        disabled
-          ? `${itemkey} disabled`
-          : withDefault
-          ? `${itemkey} default`
-          : `${itemValuePath[0]}`
-      }
-      name={name}
-      disabled={disabled}
-    >
-      <option
-        key={`${itemkey} disabled`}
-        disabled
-        hidden
-        value={`${itemkey} disabled`}
+    <DropdownContainer>
+      {lable}
+      <DropdownSelectContainer
+        onChange={onChange}
+        defaultValue={
+          disabled
+            ? `${itemkey} disabled`
+            : withDefault
+            ? `${itemkey} default`
+            : `${itemValuePath[0]}`
+        }
+        name={name}
+        disabled={disabled}
       >
-        {disabledItem}
-      </option>
-
-      {withDefault && (
-        <option key={`${itemkey} default`} value={`${itemkey} default`}>
-          {defaultItem}
-        </option>
-      )}
-
-      {items.map((item, idx) => (
         <option
-          key={`${itemkey} ${itemValuePath[idx]}`}
-          value={`${itemValuePath[idx]}`}
+          key={`${itemkey} disabled`}
+          disabled
+          hidden
+          value={`${itemkey} disabled`}
         >
-          {itemValuePath[idx]}
+          {disabledItem}
         </option>
-      ))}
+
+        {withDefault && (
+          <option key={`${itemkey} default`} value={`${itemkey} default`}>
+            {defaultItem}
+          </option>
+        )}
+
+        {items.map((item, idx) => (
+          <option
+            key={`${itemkey} ${itemValuePath[idx]}`}
+            value={`${itemValuePath[idx]}`}
+          >
+            {itemValuePath[idx]}
+          </option>
+        ))}
+      </DropdownSelectContainer>
     </DropdownContainer>
   );
 };
