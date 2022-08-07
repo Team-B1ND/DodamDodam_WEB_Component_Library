@@ -51,7 +51,6 @@ const items = [
 
 const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   const { value, name } = e.target;
-  console.log(value, name);
 };
 
 CommonDisabled.args = {

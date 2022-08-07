@@ -87,4 +87,4 @@ const Dropdown = <T extends { idx: number | string }>({
   );
 };
 
-export default Dropdown;
+export default React.memo(Dropdown);

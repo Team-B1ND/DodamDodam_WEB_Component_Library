@@ -5,8 +5,8 @@ import Dropdown from "./Dropdown";
 describe("<Dropdown/>", () => {
   test("Dropdown 컴포넌트 렌더링 확인", () => {
     render(
-      <Dropdown
-        itemkey={"testDropdown"}
+      <Dropdown<{ value: string }>
+        itemKey={"testDropdown"}
         disabled={"test" === "test"}
         disabledItem={"비활성화 테스트"}
         withDefault={true}
