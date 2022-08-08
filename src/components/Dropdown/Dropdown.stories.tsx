@@ -91,9 +91,9 @@ CommonEnabledNoneDefault.args = {
   onChange: onChange,
 };
 
-export const CommonWithLable = Template.bind({});
+export const CommonWithLabel = Template.bind({});
 
-CommonWithLable.args = {
+CommonWithLabel.args = {
   itemkey: "오후1",
   disabled: false,
   disabledItem: "비활성화",
@@ -101,6 +101,6 @@ CommonWithLable.args = {
   name: "오후1",
   items: items,
   itemsValuePath: "obj/value",
-  lable: <>오후1</>,
+  label: <>오후1</>,
   onChange: onChange,
 };

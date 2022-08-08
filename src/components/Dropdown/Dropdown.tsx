@@ -11,7 +11,7 @@ interface DropdownProps<T extends { idx: number | string }> {
   items: T[];
   itemsValuePath: string;
   onChange: any;
-  lable?: JSX.Element;
+  label?: JSX.Element;
 }
 
 const Dropdown = <T extends { idx: number | string }>({
@@ -24,7 +24,7 @@ const Dropdown = <T extends { idx: number | string }>({
   items,
   itemsValuePath,
   onChange,
-  lable = <></>,
+  label = <></>,
 }: DropdownProps<T>) => {
   const paths = itemsValuePath.split("/");
 
@@ -46,7 +46,7 @@ const Dropdown = <T extends { idx: number | string }>({
 
   return (
     <DropdownContainer>
-      {lable}
+      {label}
       <DropdownSelectContainer
         onChange={onChange}
         defaultValue={
