@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import {
   TextAreaContainer,
   TextAreaLength,
@@ -13,31 +13,31 @@ interface TextAreaProps {
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   textMaxLength: number;
   name?: string;
-  fontSize?: string | number;
+  customStyle?: CSSProperties;
+  textAreaFontSize?: string | number;
 }
 
 const TextArea = ({
   width,
   height,
-  fontSize = 12,
   text,
   placeHolder,
   onChange,
   textMaxLength,
   name = "none",
+  customStyle,
+  textAreaFontSize = 12,
 }: TextAreaProps) => {
   return (
-    <TextAreaContainer style={{ width, height }}>
+    <TextAreaContainer style={{ width, height, ...customStyle }}>
       <TextAreaWrap
         value={text}
         onChange={onChange}
         placeholder={placeHolder}
         name={name}
+        style={{ fontSize: textAreaFontSize }}
       />
-      <TextAreaLength
-        isExcess={textMaxLength < text.length}
-        style={{ fontSize }}
-      >
+      <TextAreaLength isExcess={textMaxLength < text.length}>
         {text.length}/{textMaxLength}
       </TextAreaLength>
     </TextAreaContainer>

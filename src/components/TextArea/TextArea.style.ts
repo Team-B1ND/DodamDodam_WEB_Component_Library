@@ -14,7 +14,6 @@ export const TextAreaWrap = styled.textarea`
   outline: none;
   background-color: ${({ theme }) => theme.backgroundColor3};
   box-sizing: border-box;
-  font-size: 12px;
   overflow-y: hidden;
   color: ${({ theme }) => theme.contrast};
 
@@ -29,7 +28,6 @@ export const TextAreaWrap = styled.textarea`
 
 export const TextAreaLength = styled.span<{ isExcess: boolean }>`
   position: absolute;
-  font-size: 12px;
   line-height: 16px;
   color: ${({ theme }) => theme.contrast};
   bottom: 5px;

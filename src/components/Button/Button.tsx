@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { ButtonContainer } from "./Button.style";
 
 interface ButtonProps {
@@ -8,24 +8,24 @@ interface ButtonProps {
   onClick: any;
   disabled?: boolean;
   type?: "common" | "primary";
-  fontSize?: string | number;
+  customStyle?: CSSProperties;
 }
 
 const Button = ({
   width,
   height,
-  fontSize = 14,
   children,
   onClick,
   disabled = false,
   type = "common",
+  customStyle,
 }: ButtonProps) => {
   return (
     <ButtonContainer
       style={{
         width,
         height,
-        fontSize,
+        ...customStyle,
       }}
       type={type}
       onClick={disabled ? () => {} : onClick}

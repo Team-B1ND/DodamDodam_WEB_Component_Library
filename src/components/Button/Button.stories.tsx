@@ -21,7 +21,6 @@ PrimaryEnabled.args = {
   onClick: () => console.log("테스트"),
   disabled: false,
   children: <>테스트</>,
-  fontSize: 14,
 };
 
 export const PrimaryDisabled = Template.bind({});
@@ -33,7 +32,6 @@ PrimaryDisabled.args = {
   onClick: () => console.log("테스트"),
   disabled: true,
   children: <>테스트</>,
-  fontSize: 14,
 };
 
 export const CommonEnabled = Template.bind({});
@@ -44,7 +42,6 @@ CommonEnabled.args = {
   onClick: () => console.log("테스트"),
   disabled: false,
   children: <>테스트</>,
-  fontSize: 14,
 };
 
 export const CommonDisabled = Template.bind({});
@@ -55,5 +52,4 @@ CommonDisabled.args = {
   onClick: () => console.log("테스트"),
   disabled: true,
   children: <>테스트</>,
-  fontSize: 14,
 };

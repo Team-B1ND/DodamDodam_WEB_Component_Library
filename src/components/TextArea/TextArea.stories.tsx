@@ -24,5 +24,5 @@ Primary.args = {
   text: "테스트",
   textMaxLength: 100,
   name: "none",
-  fontSize: 12,
+  customStyle: { fontSize: 12 },
 };

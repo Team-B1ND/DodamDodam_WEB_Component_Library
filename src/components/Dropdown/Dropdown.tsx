@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { DropdownContainer, DropdownSelectContainer } from "./Dropdown.style";
 
 interface DropdownProps<T extends { idx: number | string }> {
@@ -12,6 +12,7 @@ interface DropdownProps<T extends { idx: number | string }> {
   itemsValuePath: string;
   onChange: any;
   label?: JSX.Element;
+  customStyle?: CSSProperties;
 }
 
 const Dropdown = <T extends { idx: number | string }>({
@@ -25,6 +26,7 @@ const Dropdown = <T extends { idx: number | string }>({
   itemsValuePath,
   onChange,
   label = <></>,
+  customStyle,
 }: DropdownProps<T>) => {
   const paths = itemsValuePath.split("/");
 
@@ -45,7 +47,7 @@ const Dropdown = <T extends { idx: number | string }>({
   }
 
   return (
-    <DropdownContainer>
+    <DropdownContainer style={customStyle}>
       {label}
       <DropdownSelectContainer
         onChange={onChange}
