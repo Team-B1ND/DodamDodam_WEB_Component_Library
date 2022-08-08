@@ -2,7 +2,7 @@ import React from "react";
 import { ButtonContainer } from "./Button.style";
 
 interface ButtonProps {
-  children: JSX.Element;
+  children: JSX.Element | string;
   width: string | number;
   height: string | number;
   onClick: any;
