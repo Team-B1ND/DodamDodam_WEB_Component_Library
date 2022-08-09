@@ -17,7 +17,7 @@ const Template: ComponentStory<typeof DatePicker> = (args) => (
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  width: 137,
+  width: 200,
   height: 32,
   customStyle: {
     fontSize: 16,
