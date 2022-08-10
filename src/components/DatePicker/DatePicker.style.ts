@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { palette } from "../../styles/palette";
 
 export const DatePickerContainer = styled.div`
@@ -54,7 +54,7 @@ export const DatePickerButtonIcon = styled.div`
 
 export const DatePickerCalendar = styled.div<{ containerHeight: number }>`
   width: 310px;
-  height: 305px;
+  height: 310px;
   background-color: white;
   position: absolute;
   left: 50%;
@@ -117,7 +117,10 @@ export const DatePickerCalendarItemWrap = styled.div`
   box-sizing: border-box;
 `;
 
-export const DatePickerCalendarItem = styled.div`
+export const DatePickerCalendarItem = styled.button<{
+  isDisabled: boolean;
+  isSelected: boolean;
+}>`
   width: 36px;
   height: 36px;
   margin: 0px 2px;
@@ -127,9 +130,26 @@ export const DatePickerCalendarItem = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 100%;
-  cursor: pointer;
+  background: none;
+  border: 0px;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
+  ${({ isDisabled, isSelected }) =>
+    isDisabled
+      ? css`
+          color: #969696;
+          cursor: default;
+        `
+      : css`
+          cursor: pointer;
+
+          ${isSelected
+            ? css`
+                background-color: ${palette.main};
+              `
+            : css`
+                &:hover {
+                  background-color: rgba(0, 0, 0, 0.04);
+                }
+              `}
+        `};
 `;
