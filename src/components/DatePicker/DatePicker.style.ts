@@ -13,7 +13,7 @@ export const DatePickerContainer = styled.div`
 export const DatePickerWrap = styled.div`
   width: 100%;
   height: 100%;
-  padding: 7px 0px;
+  padding: 6px 0px;
   color: ${({ theme }) => theme.contrast};
   cursor: pointer;
   display: flex;
@@ -28,8 +28,8 @@ export const DatePickerDate = styled.span`
 `;
 
 export const DatePickerButton = styled.button`
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,8 +48,14 @@ export const DatePickerButton = styled.button`
   }
 `;
 
-export const DatePickerButtonIcon = styled.div`
-  font-size: 18px;
+export const DatePickerButtonIcon = styled.img`
+  width: 18px;
+  height: 18px;
+  object-fit: scale-down;
+
+  #DatePickerIconColor {
+    fill: ${({ theme }) => theme.contrast};
+  }
 `;
 
 export const DatePickerCalendar = styled.div<{ containerHeight: number }>`
@@ -90,6 +96,16 @@ export const DatePickerCalendarHeaderArrow = styled.button`
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
+  }
+`;
+
+export const DatePickerCalendarHeaderArrowIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  object-fit: scale-down;
+
+  #DatePickerArrowIconColor {
+    fill: #0000008a;
   }
 `;
 
@@ -144,6 +160,7 @@ export const DatePickerCalendarItem = styled.button<{
 
           ${isSelected
             ? css`
+                color: white;
                 background-color: ${palette.main};
               `
             : css`

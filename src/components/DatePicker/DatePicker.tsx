@@ -12,6 +12,7 @@ import {
   DatePickerCalendar,
   DatePickerCalendarHeader,
   DatePickerCalendarHeaderArrow,
+  DatePickerCalendarHeaderArrowIcon,
   DatePickerCalendarHeaderDayItem,
   DatePickerCalendarHeaderDayWrap,
   DatePickerCalendarItem,
@@ -20,6 +21,8 @@ import {
   DatePickerDate,
   DatePickerWrap,
 } from "./DatePicker.style";
+import DatePickerIcon from "../../assets/imgs/DatePicker/DatePickerIcon.svg";
+import DatePickerArrowIcon from "../../assets/imgs/DatePicker/DatePickerArrowIcon.svg";
 
 interface DatePickerProps {
   itemKey: string;
@@ -81,7 +84,7 @@ const DatePicker = ({
     let afterDayList: number[] = [];
 
     if (beforeLastDay !== 6) {
-      for (let i = 0; i < beforeLastDay; i++) {
+      for (let i = 0; i < beforeLastDay + 1; i++) {
         beforeDayList.unshift(beforeLastDate - i);
       }
     }
@@ -143,8 +146,6 @@ const DatePicker = ({
     setLastDate(dayList.indexOf(1));
   }, [dayList]);
 
-  useEffect(() => {}, []);
-
   return (
     <DatePickerContainer
       style={{ width, height, ...customStyle }}
@@ -155,7 +156,10 @@ const DatePicker = ({
           {selectDate.year}.{selectDate.month}.{selectDate.day}
         </DatePickerDate>
         <DatePickerButton>
-          <DatePickerButtonIcon>📅</DatePickerButtonIcon>
+          <DatePickerButtonIcon
+            src={DatePickerIcon}
+            alt={`${itemKey} datePicker calendarIcon`}
+          />
         </DatePickerButton>
       </DatePickerWrap>
       {!fold && (
@@ -164,7 +168,10 @@ const DatePicker = ({
             <DatePickerCalendarHeaderArrow
               onClick={() => onChangeCalendarMonth("prev")}
             >
-              &lt;
+              {/* <DatePickerCalendarHeaderArrowIcon
+                src={DatePickerArrowIcon}
+                alt={`${itemKey} datePicker calendarLeftArrow`}
+              /> */}
             </DatePickerCalendarHeaderArrow>
             {calendarDate.year}년 {calendarDate.month}월
             <DatePickerCalendarHeaderArrow

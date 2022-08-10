@@ -3,6 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import image from "@rollup/plugin-image";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
 const pkg = require("./package.json");
@@ -31,6 +32,7 @@ export default [
         exclude: [/\.test.(js|jsx|ts|tsx)$/, /\.stories.(js|jsx|ts|tsx|mdx)$/],
         tsconfig: "./tsconfig.json",
       }),
+      image(),
       postcss(),
       peerDepsExternal(),
     ],
