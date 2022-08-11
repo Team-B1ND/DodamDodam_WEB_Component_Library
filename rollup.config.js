@@ -4,8 +4,9 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import image from "@rollup/plugin-image";
+import svgr from "@svgr/rollup";
+import url from "@rollup/plugin-url";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-
 const pkg = require("./package.json");
 
 const external = ["react", "react-dom", "styled-components"];
@@ -35,6 +36,8 @@ export default [
       image(),
       postcss(),
       peerDepsExternal(),
+      url(),
+      svgr(),
     ],
   },
   {

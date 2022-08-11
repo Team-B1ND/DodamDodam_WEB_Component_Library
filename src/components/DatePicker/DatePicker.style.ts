@@ -17,7 +17,7 @@ export const DatePickerWrap = styled.div`
   color: ${({ theme }) => theme.contrast};
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   box-sizing: border-box;
   position: relative;
@@ -53,7 +53,7 @@ export const DatePickerButtonIcon = styled.img`
   height: 18px;
   object-fit: scale-down;
 
-  #DatePickerIconColor {
+  .DatePickerIconColor {
     fill: ${({ theme }) => theme.contrast};
   }
 `;
@@ -93,18 +93,29 @@ export const DatePickerCalendarHeaderArrow = styled.button`
   border: 0px;
   cursor: pointer;
   border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.04);
   }
 `;
 
-export const DatePickerCalendarHeaderArrowIcon = styled.img`
-  width: 24px;
-  height: 24px;
+export const DatePickerCalendarHeaderArrowIcon = styled.img<{
+  isRight: boolean;
+}>`
+  width: 14px;
   object-fit: scale-down;
+  fill: #0000008a;
 
-  #DatePickerArrowIconColor {
+  ${({ isRight }) =>
+    isRight &&
+    css`
+      transform: rotate(180deg);
+    `}
+
+  .DatePickerArrowIconColor {
     fill: #0000008a;
   }
 `;
@@ -131,6 +142,7 @@ export const DatePickerCalendarItemWrap = styled.div`
   flex-wrap: wrap;
   padding: 0px 15px;
   box-sizing: border-box;
+  row-gap: 0px;
 `;
 
 export const DatePickerCalendarItem = styled.button<{

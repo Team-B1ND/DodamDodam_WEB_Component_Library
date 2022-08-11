@@ -29,7 +29,7 @@ interface DatePickerProps {
   width: string | number;
   height: string | number;
   customStyle?: CSSProperties;
-  onChange: (date: Date) => void;
+  onChange: (e: Date) => void;
 }
 
 const DatePicker = ({
@@ -133,6 +133,7 @@ const DatePicker = ({
         month: calendarDate.month,
         day,
       }));
+      onChange(new Date(calendarDate.year, calendarDate.month - 1, day));
     },
     [setSelectDate, calendarDate.year, calendarDate.month]
   );
@@ -145,6 +146,16 @@ const DatePicker = ({
     setFirstDate(dayList.indexOf(1, 7));
     setLastDate(dayList.indexOf(1));
   }, [dayList]);
+
+  useEffect(() => {
+    if (!fold) {
+      setCalendarDate((prev) => ({
+        ...prev,
+        year: selectDate.year,
+        month: selectDate.month,
+      }));
+    }
+  }, [fold]);
 
   return (
     <DatePickerContainer
@@ -168,16 +179,21 @@ const DatePicker = ({
             <DatePickerCalendarHeaderArrow
               onClick={() => onChangeCalendarMonth("prev")}
             >
-              {/* <DatePickerCalendarHeaderArrowIcon
+              <DatePickerCalendarHeaderArrowIcon
                 src={DatePickerArrowIcon}
                 alt={`${itemKey} datePicker calendarLeftArrow`}
-              /> */}
+                isRight={false}
+              />
             </DatePickerCalendarHeaderArrow>
             {calendarDate.year}년 {calendarDate.month}월
             <DatePickerCalendarHeaderArrow
               onClick={() => onChangeCalendarMonth("next")}
             >
-              &gt;
+              <DatePickerCalendarHeaderArrowIcon
+                src={DatePickerArrowIcon}
+                alt={`${itemKey} datePicker calendarRightArrow`}
+                isRight={true}
+              />
             </DatePickerCalendarHeaderArrow>
           </DatePickerCalendarHeader>
           <DatePickerCalendarHeaderDayWrap>
