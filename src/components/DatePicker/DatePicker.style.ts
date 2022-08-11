@@ -38,6 +38,7 @@ export const DatePickerButton = styled.button`
   border: 0px;
   cursor: pointer;
   position: absolute;
+  z-index: 9;
   right: 0px;
   top: 50%;
   transform: translate(-0%, -50%);
@@ -58,13 +59,14 @@ export const DatePickerButtonIcon = styled.img`
   }
 `;
 
-export const DatePickerCalendar = styled.div<{ containerHeight: number }>`
+export const DatePickerCalendar = styled.div<{ x: number; y: number }>`
   width: 310px;
   height: 310px;
   background-color: white;
-  position: absolute;
-  left: 50%;
-  top: ${({ containerHeight }) => containerHeight + 1}px;
+  top: ${({ y }) => y + 1}px;
+  left: ${({ x }) => x}px;
+  position: fixed;
+  z-index: 10;
   transform: translate(-50%, -0%);
   border: 0px;
   box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
@@ -82,6 +84,7 @@ export const DatePickerCalendarHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 1rem;
+  color: black;
 `;
 
 export const DatePickerCalendarHeaderArrow = styled.button`

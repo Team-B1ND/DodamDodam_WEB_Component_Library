@@ -10,6 +10,8 @@ describe("<DatePicker/>", () => {
         height={12}
         itemKey={"testDatePicker"}
         onChange={() => {}}
+        value={""}
+        splitCharacter={"-"}
       />
     );
   });

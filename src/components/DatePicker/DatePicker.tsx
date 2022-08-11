@@ -30,6 +30,8 @@ interface DatePickerProps {
   height: string | number;
   customStyle?: CSSProperties;
   onChange: (e: Date) => void;
+  value: string;
+  splitCharacter: string;
 }
 
 const DatePicker = ({
@@ -38,42 +40,61 @@ const DatePicker = ({
   height,
   customStyle,
   onChange,
+  value,
+  splitCharacter,
 }: DatePickerProps) => {
-  const date = new Date();
-  const $year = date.getFullYear();
-  const $month = date.getMonth() + 1;
-  const $day = date.getDate();
+  //날짜 초깃값
+  const date = value.split(splitCharacter);
+  const $year = Number(date[0]);
+  const $month = Number(date[1]);
+  const $day = Number(date[2]);
 
+  //캘린터 핸들 상태
   const [fold, setFold] = useState(true);
 
+  //캘린더 날짜
   const [calendarDate, setCalendarDate] = useState({
     year: $year,
     month: $month,
   });
+
+  //사용자가 선택한 날짜
   const [selectDate, setSelectDate] = useState({
     year: $year,
     month: $month,
     day: $day,
   });
+
+  //캘린더에 보여지는 날짜 배열
   const [dayList, setDayList] = useState<number[]>([]);
+
+  //해당 달의 첫번재 날
   const [firstDate, setFirstDate] = useState<number>(dayList.indexOf(1, 7));
+
+  //해당 달의 마제막 날
   const [lastDate, setLastDate] = useState<number>(dayList.indexOf(1));
 
+  //데이트 피커 ref
   const containerRef = useRef<HTMLDivElement>(null);
+  const [calendarCoord, setCalendarCoold] = useState({ x: 0, y: 0 });
 
+  //데이트피커 아웃사이드 클릭 체크
   useEffect(() => {
+    console.log(containerRef.current?.getBoundingClientRect());
     document.addEventListener("click", (e) => handleClickOutside(e));
     return () => {
       document.removeEventListener("click", (e) => handleClickOutside(e));
     };
   });
 
+  //데이트피커 아웃사이트 클릭 핸들 함수
   const handleClickOutside = (e: Event) => {
     if (containerRef && !containerRef.current?.contains(e.target as Node)) {
       setFold(true);
     }
   };
 
+  //캘린터 달 변경시 날짜배열 만드는 함수
   const createDayList = (month: number): number[] => {
     let beforeLastDate = new Date(calendarDate.year, month - 1, 0).getDate();
     let beforeLastDay = new Date(calendarDate.year, month - 1, 0).getDay();
@@ -98,6 +119,7 @@ const DatePicker = ({
     return beforeDayList.concat(today, afterDayList);
   };
 
+  //캘린더 달 변경 함수
   const onChangeCalendarMonth = useCallback(
     (direction: "prev" | "next") => {
       if (direction === "prev") {
@@ -125,6 +147,7 @@ const DatePicker = ({
     [setCalendarDate, calendarDate.month]
   );
 
+  //캘린더 날짜 선택 함수
   const onChangeSelectDate = useCallback(
     (day: number) => {
       setSelectDate((prev) => ({
@@ -138,22 +161,48 @@ const DatePicker = ({
     [setSelectDate, calendarDate.year, calendarDate.month]
   );
 
+  //캘린더 날짜 배열을 다시 만들기 위해 캘린더 달 체크
   useEffect(() => {
     setDayList(createDayList(calendarDate.month));
   }, [calendarDate.month]);
 
+  //캘린더 날짜 배열 다시 만들어지면 해당 달 첫째날 마지막날 계산을 위해 날짜 배열 체크
   useEffect(() => {
     setFirstDate(dayList.indexOf(1, 7));
     setLastDate(dayList.indexOf(1));
   }, [dayList]);
 
+  //모달 위치 지정과 선택한 캘린더 달이 선택한 달 기준으로 돌아가기 위해 캘린더 상태 체크
   useEffect(() => {
     if (!fold) {
+      if (containerRef && containerRef.current) {
+        setCalendarCoold((prev) => ({
+          ...prev,
+          x: containerRef.current!.getBoundingClientRect().left,
+          y: containerRef.current!.getBoundingClientRect().top,
+        }));
+      }
+
       setCalendarDate((prev) => ({
         ...prev,
         year: selectDate.year,
         month: selectDate.month,
       }));
+    }
+  }, [fold]);
+
+  useEffect(() => {
+    if (!fold) {
+      document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+      return () => {
+        const scrollY = document.body.style.top;
+        document.body.style.cssText = "";
+        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+      };
     }
   }, [fold]);
 
@@ -164,7 +213,7 @@ const DatePicker = ({
     >
       <DatePickerWrap onClick={() => setFold((prev) => !prev)}>
         <DatePickerDate>
-          {selectDate.year}.{selectDate.month}.{selectDate.day}
+          {selectDate.year}/{selectDate.month}/{selectDate.day}
         </DatePickerDate>
         <DatePickerButton>
           <DatePickerButtonIcon
@@ -174,7 +223,10 @@ const DatePicker = ({
         </DatePickerButton>
       </DatePickerWrap>
       {!fold && (
-        <DatePickerCalendar containerHeight={Number(height)}>
+        <DatePickerCalendar
+          y={calendarCoord.y + Number(height)}
+          x={calendarCoord.x + Number(width) / 2}
+        >
           <DatePickerCalendarHeader>
             <DatePickerCalendarHeaderArrow
               onClick={() => onChangeCalendarMonth("prev")}
@@ -220,6 +272,7 @@ const DatePicker = ({
                   isSelected={isSelected}
                   disabled={isDisabled}
                   onClick={() => onChangeSelectDate(day)}
+                  key={`${itemKey} datePicker calendarItem ${idx}`}
                 >
                   {day}
                 </DatePickerCalendarItem>

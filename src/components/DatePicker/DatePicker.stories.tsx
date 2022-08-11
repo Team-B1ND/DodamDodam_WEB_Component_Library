@@ -30,4 +30,6 @@ Common.args = {
     marginRight: "auto",
   },
   onChange: onChangeFn,
+  value: "2022-9-21",
+  splitCharacter: "-",
 };
