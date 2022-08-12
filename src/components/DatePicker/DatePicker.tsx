@@ -32,6 +32,7 @@ interface DatePickerProps {
   onChange: (e: Date) => void;
   value: string;
   splitCharacter: string;
+  children?: JSX.Element | string;
 }
 
 const DatePicker = ({
@@ -42,6 +43,7 @@ const DatePicker = ({
   onChange,
   value,
   splitCharacter,
+  children,
 }: DatePickerProps) => {
   //날짜 초깃값
   const date = value.split(splitCharacter);
@@ -216,10 +218,11 @@ const DatePicker = ({
       style={{ width, height, ...customStyle }}
       ref={containerRef}
     >
-      <DatePickerWrap onClick={() => setFold((prev) => !prev)}>
+      <DatePickerWrap id={itemKey} onClick={() => setFold((prev) => !prev)}>
         <DatePickerDate>
           {selectDate.year}/{selectDate.month}/{selectDate.day}
         </DatePickerDate>
+        {children}
         <DatePickerButton>
           <DatePickerButtonIcon
             src={DatePickerIcon}

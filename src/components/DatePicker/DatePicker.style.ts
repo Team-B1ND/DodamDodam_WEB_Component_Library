@@ -18,7 +18,6 @@ export const DatePickerWrap = styled.div`
   cursor: pointer;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
   box-sizing: border-box;
   position: relative;
 `;
