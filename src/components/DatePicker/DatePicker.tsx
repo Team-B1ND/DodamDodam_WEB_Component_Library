@@ -80,7 +80,6 @@ const DatePicker = ({
 
   //데이트피커 아웃사이드 클릭 체크
   useEffect(() => {
-    console.log(containerRef.current?.getBoundingClientRect());
     document.addEventListener("click", (e) => handleClickOutside(e));
     return () => {
       document.removeEventListener("click", (e) => handleClickOutside(e));
@@ -160,6 +159,16 @@ const DatePicker = ({
     },
     [setSelectDate, calendarDate.year, calendarDate.month]
   );
+
+  //value값이 변하면 바로 캘린더에 반영하기 위해 value 체크
+  useEffect(() => {
+    setSelectDate((prev) => ({
+      ...prev,
+      year: $year,
+      month: $month,
+      day: $day,
+    }));
+  }, [value]);
 
   //캘린더 날짜 배열을 다시 만들기 위해 캘린더 달 체크
   useEffect(() => {

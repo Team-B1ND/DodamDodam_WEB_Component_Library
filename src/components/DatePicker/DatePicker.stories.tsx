@@ -17,10 +17,6 @@ const Template: ComponentStory<typeof DatePicker> = (args) => (
 export const Common = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
-const onChangeFn = (e: Date) => {
-  console.log(e);
-};
-
 Common.args = {
   width: 200,
   height: 32,
@@ -29,7 +25,7 @@ Common.args = {
     marginLeft: "auto",
     marginRight: "auto",
   },
-  onChange: onChangeFn,
-  value: "2022-9-21",
   splitCharacter: "-",
+  onChange: () => {},
+  value: "2022-08-12",
 };

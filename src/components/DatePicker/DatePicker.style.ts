@@ -38,7 +38,7 @@ export const DatePickerButton = styled.button`
   border: 0px;
   cursor: pointer;
   position: absolute;
-  z-index: 9;
+  z-index: 1;
   right: 0px;
   top: 50%;
   transform: translate(-0%, -50%);
