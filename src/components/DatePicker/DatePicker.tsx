@@ -197,11 +197,7 @@ const DatePicker = ({
         year: selectDate.year,
         month: selectDate.month,
       }));
-    }
-  }, [fold]);
 
-  useEffect(() => {
-    if (!fold) {
       document.body.style.cssText = `
       position: fixed; 
       top: -${window.scrollY}px;
