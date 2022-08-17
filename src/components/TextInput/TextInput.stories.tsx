@@ -16,4 +16,10 @@ const Template: ComponentStory<typeof TextInput> = (args) => (
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  width: 334,
+  onChange: () => {},
+  value: "test",
+  type: "text",
+  name: "test",
+};
