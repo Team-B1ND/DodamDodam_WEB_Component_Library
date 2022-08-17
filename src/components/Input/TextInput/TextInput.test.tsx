@@ -5,13 +5,7 @@ import TextInput from "./TextInput";
 describe("<TextInput/>", () => {
   test("TextInput 컴포넌트 렌더링 확인", () => {
     render(
-      <TextInput
-        width={334}
-        onChange={() => {}}
-        value={"test"}
-        type="text"
-        name="test"
-      />
+      <TextInput width={334} onChange={() => {}} value={"test"} name="test" />
     );
   });
 });

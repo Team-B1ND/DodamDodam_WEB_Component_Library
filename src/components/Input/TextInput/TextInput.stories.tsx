@@ -4,7 +4,7 @@ import TextInput from "./TextInput";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "DodamDodamComponentLibrary/TextInput",
+  title: "DodamDodamComponentLibrary/Input",
   component: TextInput,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
 } as ComponentMeta<typeof TextInput>;
@@ -14,12 +14,11 @@ const Template: ComponentStory<typeof TextInput> = (args) => (
   <TextInput {...args} />
 );
 
-export const Primary = Template.bind({});
+export const CommonText = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
+CommonText.args = {
   width: 334,
   onChange: () => {},
   value: "test",
-  type: "text",
   name: "test",
 };
