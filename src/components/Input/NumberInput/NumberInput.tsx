@@ -8,6 +8,7 @@ interface NumberInputProps {
   value: number;
   name?: string;
   customStyle?: CSSProperties;
+  placeholder?: string;
 }
 
 const NumberInput = ({
@@ -16,6 +17,7 @@ const NumberInput = ({
   value,
   name,
   customStyle,
+  placeholder,
 }: NumberInputProps) => {
   return (
     <NumberInputContainer
@@ -24,6 +26,7 @@ const NumberInput = ({
       type="number"
       name={name}
       value={value}
+      placeholder={placeholder}
     />
   );
 };

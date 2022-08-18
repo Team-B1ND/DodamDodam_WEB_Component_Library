@@ -7,6 +7,7 @@ interface TextInputProps {
   value: any;
   name?: string;
   customStyle?: CSSProperties;
+  placeHolder?: string;
 }
 
 const TextInput = ({
@@ -15,6 +16,7 @@ const TextInput = ({
   value,
   name,
   customStyle,
+  placeHolder,
 }: TextInputProps) => {
   return (
     <TextInputContainer
@@ -23,6 +25,7 @@ const TextInput = ({
       type="text"
       name={name}
       value={value}
+      placeholder={placeHolder}
     />
   );
 };
