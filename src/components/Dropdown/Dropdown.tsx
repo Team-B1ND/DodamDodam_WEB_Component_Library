@@ -1,21 +1,21 @@
 import React, { CSSProperties } from "react";
 import { DropdownContainer, DropdownSelectContainer } from "./Dropdown.style";
 
-interface DropdownProps<T extends { idx: number | string }> {
+interface DropdownProps {
   itemkey: string;
   disabled: boolean;
   disabledItem: string;
   withDefault: boolean;
   defaultItem: string;
   name?: string;
-  items: T[];
+  items: any[];
   itemsValuePath: string;
   onChange: any;
   label?: JSX.Element;
   customStyle?: CSSProperties;
 }
 
-const Dropdown = <T extends { idx: number | string }>({
+const Dropdown = ({
   itemkey,
   disabled,
   disabledItem,
@@ -27,7 +27,7 @@ const Dropdown = <T extends { idx: number | string }>({
   onChange,
   label = <></>,
   customStyle,
-}: DropdownProps<T>) => {
+}: DropdownProps) => {
   const paths = itemsValuePath.split("/");
 
   let itemValuePath: any[] = [];
@@ -35,14 +35,14 @@ const Dropdown = <T extends { idx: number | string }>({
   const findValue = (team: any, depth: number) => {
     depth++;
     const current = team[paths[depth]];
-    if (depth === paths.length - 1) {
+    if (depth === paths?.length - 1) {
       itemValuePath.push(current);
     } else {
       findValue(current, depth);
     }
   };
 
-  for (let i = 0; i < items.length; i++) {
+  for (let i = 0; i < items?.length; i++) {
     findValue(items[i], -1);
   }
 
@@ -76,7 +76,7 @@ const Dropdown = <T extends { idx: number | string }>({
           </option>
         )}
 
-        {items.map((item, idx) => (
+        {items?.map((item, idx) => (
           <option
             key={`${itemkey} ${itemValuePath[idx]}`}
             value={`${itemValuePath[idx]}`}
